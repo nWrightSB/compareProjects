@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="566aff18-c12f-4dc7-96ac-1055fab1b7e0" created="2.1.0" activeEnvironment="Default environment" name="Project 2" resourceRoot="" updated="2.1.0 20170726-1100" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:RestService" id="1c1341da-0a5e-4d82-aabc-feba34f43b33" wadlVersion="http://wadl.dev.java.net/2009/02" name="Smartbear Library API Documentation" type="rest" basePath="/nathansAPIs/sbLib/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:description>Listed below are default resources and methods for accessing data in our library database. For more information contact info@librapi.com</con:description><con:settings/><con:definitionCache type="TEXT" rootPart=""/><con:endpoints><con:endpoint>https://virtserver.swaggerhub.com</con:endpoint></con:endpoints><con:resource name="/books" path="/books" id="099745c4-0192-472b-8fe7-3bc78d117b1d"><con:settings/><con:parameters/><con:method name="GET" id="891cc86d-776a-45f4-8efc-d2220b9898ce" method="GET"><con:description>This resource is used to search our book database, and retrieve a set of objects related to your query. If there are no objects to return, the API will still return a 200 Status, but the "results" set will be an empty array and should be accounted for.
+Retrives an array of book objects scoped to title or authorID.</con:description><con:settings/><con:parameters><con:parameter><con:name>title</con:name><con:style>QUERY</con:style><con:description>Title string to query. API will return both whole and partial matches dependent on the *fullMatch* parameter.</con:description></con:parameter><con:parameter><con:name>fullMatch</con:name><con:style>QUERY</con:style><con:description>Boolean value of whether or not to return and exact match to the title query string.</con:description></con:parameter><con:parameter><con:name>authorID</con:name><con:style>QUERY</con:style><con:description>ID of author to retrieve related books. Similar functionality can be found by querying */authors/{id}/books*.</con:description></con:parameter></con:parameters><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:sampleContent>{
+  "status" : 200,
+  "results" : [ ]
+}</con:sampleContent></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>404</con:status><con:params/><con:sampleContent>{
+  "status" : 404,
+  "message" : "Resource not found"
+}</con:sampleContent></con:representation><con:request name="Request 1" id="e4d64d9f-9cc5-496d-87ca-d042fa8e636a" mediaType="application/json"><con:settings/><con:endpoint>https://virtserver.swaggerhub.com</con:endpoint><con:parameters/></con:request></con:method><con:method name="POST" id="2af4a345-597f-4395-a24b-b9925701b4e9" method="POST"><con:description>Returns object w/ID.
+POSTs a book object to our DB</con:description><con:settings/><con:parameters/><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>201</con:status><con:params/><con:sampleContent>{
+  "id" : 105,
+  "title" : "A Game of Thrones",
+  "description" : "From a master of contemporary fantasy comes the first novel of a landmark series...",
+  "author" : {
+    "id" : 254,
+    "first_name" : "George R.R.",
+    "last_name" : "Martin",
+    "_link" : "/authors/254"
+  },
+  "_link" : "/books/105"
+}</con:sampleContent></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>404</con:status><con:params/><con:sampleContent>{
+  "status" : 404,
+  "message" : "Resource not found"
+}</con:sampleContent></con:representation><con:request name="Request 1" id="2b11917c-26d4-4d56-9b67-e1d369848c6e" mediaType="application/json"><con:settings/><con:endpoint>https://virtserver.swaggerhub.com</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="/books/{id}" path="/books/{id}" id="9476ecc3-0e96-4500-8b0e-b02eb9729757"><con:settings/><con:parameters><con:parameter required="true"><con:name>id</con:name><con:style>TEMPLATE</con:style><con:description>Book ID to update</con:description></con:parameter></con:parameters><con:method name="GET" id="c1bf3ee5-bc2d-4fd6-8f49-8fe899f31b7d" method="GET"><con:description>Returns single book object based on ID
+GETs a single book object</con:description><con:settings/><con:parameters/><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:sampleContent>{
+  "status" : 200,
+  "result" : {
+    "id" : 105,
+    "title" : "A Game of Thrones",
+    "description" : "From a master of contemporary fantasy comes the first novel of a landmark series...",
+    "author" : {
+      "id" : 254,
+      "first_name" : "George R.R.",
+      "last_name" : "Martin",
+      "_link" : "/authors/254"
+    },
+    "_link" : "/books/105"
+  }
+}</con:sampleContent></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>404</con:status><con:params/><con:sampleContent>{
+  "status" : 404,
+  "message" : "Resource not found"
+}</con:sampleContent></con:representation><con:request name="Request 1" id="1b6422c0-1932-47ce-9cf7-f5c1a40191a8" mediaType="application/json"><con:settings/><con:endpoint>https://virtserver.swaggerhub.com</con:endpoint><con:parameters/></con:request></con:method><con:method name="DELETE" id="3e60719d-d895-4bf8-9780-568ec8d7ae8b" method="DELETE"><con:description>Deletes a created book based by ID - does not support name. Returns deleted object.
+DELETEs book object</con:description><con:settings/><con:parameters/><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:sampleContent>{
+  "id" : 105,
+  "title" : "A Game of Thrones",
+  "description" : "From a master of contemporary fantasy comes the first novel of a landmark series...",
+  "author" : {
+    "id" : 254,
+    "first_name" : "George R.R.",
+    "last_name" : "Martin",
+    "_link" : "/authors/254"
+  },
+  "_link" : "/books/105"
+}</con:sampleContent></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>404</con:status><con:params/><con:sampleContent>{
+  "status" : 404,
+  "message" : "Resource not found"
+}</con:sampleContent></con:representation><con:request name="Request 1" id="c201f6a3-9e46-4b46-9888-5545f8dcbff5" mediaType="application/json"><con:settings/><con:endpoint>https://virtserver.swaggerhub.com</con:endpoint><con:parameters/></con:request></con:method><con:method name="PATCH" id="258310d7-17ec-4d56-a3b3-618bbd3ecba8" method="PATCH"><con:description>Updates a created book based by ID - does not support name. Returns deleted object.
+PATCHs book object</con:description><con:settings/><con:parameters/><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:sampleContent>{
+  "id" : 105,
+  "title" : "A Game of Thrones",
+  "description" : "From a master of contemporary fantasy comes the first novel of a landmark series...",
+  "author" : {
+    "id" : 254,
+    "first_name" : "George R.R.",
+    "last_name" : "Martin",
+    "_link" : "/authors/254"
+  },
+  "_link" : "/books/105"
+}</con:sampleContent></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>404</con:status><con:params/><con:sampleContent>{
+  "status" : 404,
+  "message" : "Resource not found"
+}</con:sampleContent></con:representation><con:request name="Request 1" id="148ae3fe-99a2-4f5e-9999-5e2914b94eb9" mediaType="application/json"><con:settings/><con:endpoint>https://virtserver.swaggerhub.com</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="/authors" path="/authors" id="6b41f19b-5031-4286-80c0-765c982a9c1f"><con:settings/><con:parameters/><con:method name="GET" id="cd487b8a-7133-4392-9f19-3e5f3f77a472" method="GET"><con:description>Returns array based on author search params.
+GETs array of author objects based on query</con:description><con:settings/><con:parameters><con:parameter><con:name>first_name</con:name><con:style>QUERY</con:style><con:description>first name search parameter</con:description></con:parameter><con:parameter><con:name>last_name</con:name><con:style>QUERY</con:style><con:description>last name search parameter</con:description></con:parameter></con:parameters><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:sampleContent>{
+  "status" : 200,
+  "results" : [ ]
+}</con:sampleContent></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>404</con:status><con:params/><con:sampleContent>{
+  "status" : 404,
+  "message" : "Resource not found"
+}</con:sampleContent></con:representation><con:request name="Request 1" id="52308742-adac-4a7d-9fa0-90aaf013ce85" mediaType="application/json"><con:settings/><con:endpoint>https://virtserver.swaggerhub.com</con:endpoint><con:parameters/></con:request></con:method><con:method name="POST" id="7e431bf8-676a-4087-9f3a-0e9f1568a497" method="POST"><con:description>Returns object w/ID.
+POSTs an author object to our DB</con:description><con:settings/><con:parameters/><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>201</con:status><con:params/><con:sampleContent>{
+  "id" : 254,
+  "first_name" : "George R.R.",
+  "last_name" : "Martin",
+  "_link" : "/authors/254"
+}</con:sampleContent></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>404</con:status><con:params/><con:sampleContent>{
+  "status" : 404,
+  "message" : "Resource not found"
+}</con:sampleContent></con:representation><con:request name="Request 1" id="76abea0c-e523-40df-910f-c2f4624e583f" mediaType="application/json"><con:settings/><con:endpoint>https://virtserver.swaggerhub.com</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="/authors/{id}" path="/authors/{id}" id="94141d8b-1ad3-429a-a1fd-71bb3734707b"><con:settings/><con:parameters><con:parameter required="true"><con:name>id</con:name><con:style>TEMPLATE</con:style><con:description>Book ID to update</con:description></con:parameter></con:parameters><con:method name="GET" id="45a6d243-9f73-4502-83d8-5bce038f521b" method="GET"><con:description>Query for a specific author by ID.
+GETS an author object</con:description><con:settings/><con:parameters/><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:sampleContent>{
+  "status" : 200,
+  "result" : {
+    "id" : 254,
+    "first_name" : "George R.R.",
+    "last_name" : "Martin",
+    "_link" : "/authors/254"
+  }
+}</con:sampleContent></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>404</con:status><con:params/><con:sampleContent>{
+  "status" : 404,
+  "message" : "Resource not found"
+}</con:sampleContent></con:representation><con:request name="Request 1" id="105ee881-a69d-47b5-8486-5c8106c56cf4" mediaType="application/json"><con:settings/><con:endpoint>https://virtserver.swaggerhub.com</con:endpoint><con:parameters/></con:request></con:method><con:method name="DELETE" id="9808c783-25c3-4f4d-a74a-310e52a0c9ce" method="DELETE"><con:description>Deletes a created book based by ID - does not support name. Returns deleted object.
+DELETEs author object</con:description><con:settings/><con:parameters/><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:sampleContent>{
+  "id" : 105,
+  "title" : "A Game of Thrones",
+  "description" : "From a master of contemporary fantasy comes the first novel of a landmark series...",
+  "author" : {
+    "id" : 254,
+    "first_name" : "George R.R.",
+    "last_name" : "Martin",
+    "_link" : "/authors/254"
+  },
+  "_link" : "/books/105"
+}</con:sampleContent></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>404</con:status><con:params/><con:sampleContent>{
+  "status" : 404,
+  "message" : "Resource not found"
+}</con:sampleContent></con:representation><con:request name="Request 1" id="ce2cfc52-ac66-4df1-b8ce-d0d3919736cf" mediaType="application/json"><con:settings/><con:endpoint>https://virtserver.swaggerhub.com</con:endpoint><con:parameters/></con:request></con:method><con:method name="PATCH" id="9c21f34d-916a-4a4e-8059-beeedd62770d" method="PATCH"><con:description>Updates a created author based by ID - does not support name. Returns deleted object.
+PATCHs author object</con:description><con:settings/><con:parameters/><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:sampleContent>{
+  "id" : 254,
+  "first_name" : "George R.R.",
+  "last_name" : "Martin",
+  "_link" : "/authors/254"
+}</con:sampleContent></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>404</con:status><con:params/><con:sampleContent>{
+  "status" : 404,
+  "message" : "Resource not found"
+}</con:sampleContent></con:representation><con:request name="Request 1" id="847bed9d-0089-4ab0-9bac-a387221fd456" mediaType="application/json"><con:settings/><con:endpoint>https://virtserver.swaggerhub.com</con:endpoint><con:parameters/></con:request></con:method></con:resource></con:interface><con:savedRecentRuns>1</con:savedRecentRuns><con:properties/><con:wssContainer/><con:databaseConnectionContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:reporting><con:xmlTemplates/><con:parameters/></con:reporting><con:authRepository/><con:tags/></con:soapui-project>
